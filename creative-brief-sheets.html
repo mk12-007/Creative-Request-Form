@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Creative Brief</title>
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--tx:#1a1a1a;--mu:#6b6b66;--bd:#deddd6;--ac:#f2b705;--acx:#1a1a1a;--er:#c0392b;--ok:#2e7d32;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141412;--card:#1e1e1b;--tx:#f0efe9;--mu:#a3a29a;--bd:#33332e;--er:#ff6b5b;--ok:#6fcf74}}
+:root[data-theme="dark"]{--bg:#141412;--card:#1e1e1b;--tx:#f0efe9;--mu:#a3a29a;--bd:#33332e;--er:#ff6b5b;--ok:#6fcf74}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:26px;margin:0 0 4px}
+.sub{color:var(--mu);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px;margin-bottom:16px}
+.card h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin:0 0 14px}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{display:flex;flex-direction:column;gap:4px}
+.full{grid-column:1/-1}
+label{font-size:14px;font-weight:600}
+label i{color:var(--er);font-style:normal}
+input,select,textarea{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:9px 10px;width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ac);border-color:var(--ac)}
+textarea{min-height:84px;resize:vertical}
+.hint{font-size:13px;color:var(--mu)}
+.err{font-size:13px;color:var(--er);min-height:0}
+.bad{border-color:var(--er)!important}
+.info{background:var(--bg);border-left:4px solid var(--ac);padding:10px 12px;border-radius:6px;font-size:14px}
+.warn{border-left-color:var(--er)}
+.sw{display:flex;align-items:center;gap:10px}
+.sw input{width:auto}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+button{font:inherit;font-weight:600;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:10px 16px;cursor:pointer}
+button.p{background:var(--ac);color:var(--acx);border-color:var(--ac)}
+#out{white-space:pre-wrap;font:14px/1.5 ui-monospace,Menlo,Consolas,monospace;background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:14px;overflow-x:auto}
+.rules{font-size:14px;color:var(--mu);margin:0;padding-left:18px}
+@media (max-width:560px){.g{grid-template-columns:1fr}}
+@media print{.btns,.rules,#form{display:none}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Creative Brief</h1>
+<p class="sub">Complete every required field so the Creative Team can start without follow-ups.</p>
+
+<div id="form">
+<div class="card"><h2>1. Request</h2><div class="g">
+<div class="f"><label for="name">Requester name <i>*</i></label><input id="name"><div class="err"></div></div>
+<div class="f"><label for="dept">Department <i>*</i></label><input id="dept"><div class="err"></div></div>
+<div class="f full"><label for="cat">Request type <i>*</i></label>
+<select id="cat"></select><div class="err"></div></div>
+<div class="f full"><div id="tl" class="info"></div></div>
+</div></div>
+
+<div class="card"><h2>2. Brief</h2><div class="g">
+<div class="f full"><label for="title">Title <i>*</i></label><input id="title" placeholder="e.g. New Drink Launch Poster"><div class="err"></div></div>
+<div class="f full"><label for="slogan">Slogan / headline <i>*</i></label><input id="slogan"><div class="err"></div></div>
+<div class="f full"><label for="concept">Concept / message <i>*</i></label><textarea id="concept" placeholder="Objective, target audience, mood, key message"></textarea><div class="err"></div></div>
+<div class="f full"><label for="refs">References <i>*</i></label><textarea id="refs" placeholder="Links or file names, one per line"></textarea><div class="err"></div></div>
+<div class="f"><label for="size">Size / format</label><input id="size" placeholder="e.g. 1080x1350 px, A3 print"></div>
+<div class="f"><label for="appr">Approval person</label><input id="appr"></div>
+<div class="f full"><label for="notes">Other notes</label><textarea id="notes"></textarea></div>
+</div></div>
+
+<div class="card"><h2>3. Deadline</h2><div class="g">
+<div class="f"><label for="req">Request date</label><input type="date" id="req"></div>
+<div class="f"><label for="dl">Deadline <i>*</i></label><input type="date" id="dl"><div class="err"></div></div>
+<div class="f full sw"><input type="checkbox" id="urg"><label for="urg" style="font-weight:500">This is an urgent request</label></div>
+<div class="f full" id="urgbox" hidden>
+<label for="uap">Approved by <i>*</i></label>
+<select id="uap"><option value="">Select approver</option><option>Line Manager</option><option>CEO</option></select>
+<div class="err"></div><div class="hint">Urgent requests need Line Manager or CEO approval.</div></div>
+<div class="f full"><div id="dlmsg" class="info" hidden></div></div>
+</div></div>
+
+<div class="card"><h2>Rules</h2><ul class="rules">
+<li>Submit full information: title, slogan, concept, references, deadline.</li>
+<li>Non-urgent tasks should be alerted beforehand.</li>
+<li>Reply within 24 hours of receiving the design, or it moves to the next stage automatically.</li>
+</ul></div>
+
+<div class="btns"><button class="p" id="gen">Submit Request</button><button id="rst">Reset</button></div>
+</div>
+
+<div class="card" id="res" hidden style="margin-top:16px">
+<h2>Your brief</h2><div id="sts" style="font-weight:600;margin-bottom:10px"></div><div id="out"></div>
+<div class="btns" style="margin-top:12px"><button class="p" id="cp">Copy text</button><button onclick="print()">Print / Save PDF</button><button id="ed">Edit</button></div>
+<div class="hint" id="cpm" style="margin-top:8px"></div>
+</div>
+</div>
+
+<script>
+var T={"Social Media":{"Holiday Poster":10,"Promotion":15,"IG Feed":7,"Engagement Content":3,"DOM":15,"Others":0},
+"Store Design":{"Wall Design":25,"Menu Design":10,"Banner Design":3,"Merchandise Display":10,"Standee Poster":5,"Others":0},
+"Operation Work":{"Vehicle Design":15,"Product Packaging":15,"Menu Drink Design":5,"Others":0},
+"Event Work":{"Wedding Poster":5,"Event Drink Menu":3,"Booth Design":10,"Others":0},
+"Internal Company Requests":{"Staff Promotion Poster":15,"Form Design":5,"Others":0}};
+var $=function(i){return document.getElementById(i)};
+var ids=["name","dept","cat","title","slogan","concept","refs","size","appr","notes","req","dl","uap"];
+var cat=$("cat"),h='<option value="">Select type</option>';
+for(var g in T){h+='<optgroup label="'+g+'">';for(var k in T[g]){h+='<option value="'+g+'|'+k+'">'+k+(T[g][k]?' ('+T[g][k]+' days)':'')+'</option>'}h+='</optgroup>'}
+cat.innerHTML=h;
+function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function days(){var v=cat.value;if(!v)return null;var p=v.split("|");return T[p[0]][p[1]]}
+function earliest(){var d=days(),r=$("req").value;if(!d||!r)return null;var x=new Date(r+"T00:00:00");x.setDate(x.getDate()+d);return x}
+function upd(){
+ var d=days(),v=cat.value,tl=$("tl"),m=$("dlmsg");
+ if(!v){tl.textContent="Pick a request type to see the standard turnaround.";tl.className="info"}
+ else if(d){tl.textContent="Standard turnaround: "+d+" days. Earliest delivery: "+(earliest()?earliest().toDateString():"set a request date")+"."}
+ else tl.textContent="Custom type: agree the timeline with the Creative Supervisor before submitting.";
+ $("urgbox").hidden=!$("urg").checked;
+ var e=earliest(),dl=$("dl").value;m.hidden=true;
+ if(e&&dl&&!$("urg").checked&&new Date(dl+"T00:00:00")<e){m.hidden=false;m.className="info warn";m.textContent="This deadline is shorter than the standard timeline. Move it to "+e.toDateString()+" or later, or mark the request urgent with approval."}
+ save()}
+function save(){try{var o={u:$("urg").checked};ids.forEach(function(i){o[i]=$(i).value});localStorage.setItem("cb",JSON.stringify(o))}catch(e){}}
+function load(){try{var o=JSON.parse(localStorage.getItem("cb")||"null");if(o){ids.forEach(function(i){if(o[i]!=null)$(i).value=o[i]});$("urg").checked=!!o.u}}catch(e){}
+ if(!$("req").value)$("req").value=iso(new Date())}
+function clr(){document.querySelectorAll(".err").forEach(function(e){e.textContent=""});document.querySelectorAll(".bad").forEach(function(e){e.classList.remove("bad")})}
+function val(){clr();var ok=true,req=["name","dept","cat","title","slogan","concept","refs","dl"];
+ if($("urg").checked)req.push("uap");
+ req.forEach(function(i){var el=$(i);if(!el.value.trim()){ok=false;el.classList.add("bad");el.parentNode.querySelector(".err").textContent="Required"}});
+ var e=earliest(),dl=$("dl").value;
+ if(e&&dl&&!$("urg").checked&&new Date(dl+"T00:00:00")<e){ok=false;$("dl").classList.add("bad");$("dl").parentNode.querySelector(".err").textContent="Earlier than standard timeline"}
+ return ok}
+function build(){
+ var p=cat.value.split("|"),d=days(),L=[];
+ L.push("CREATIVE BRIEF","====================");
+ L.push("Requester: "+$("name").value+" ("+$("dept").value+")");
+ L.push("Request date: "+$("req").value);
+ L.push("Type: "+p[0]+" > "+p[1]+(d?" (standard "+d+" days)":""));
+ L.push("Priority: "+($("urg").checked?"URGENT, approved by "+$("uap").value:"Normal"));
+ L.push("Deadline: "+$("dl").value,"");
+ L.push("Title: "+$("title").value,"Slogan: "+$("slogan").value,"","Concept:",$("concept").value,"","References:",$("refs").value);
+ if($("size").value)L.push("","Size / format: "+$("size").value);
+ if($("appr").value)L.push("Approval person: "+$("appr").value);
+ if($("notes").value)L.push("","Notes:",$("notes").value);
+ L.push("","Reply within 24 hours of receiving the design, or it moves to the next stage automatically.");
+ return L.join("\n")}
+var SHEET_URL="https://script.google.com/macros/s/AKfycbwiQovMKIThp017LFLjAaQFEd3C0stY2XVzj33HvoZl9y10Y-hrrwrdNciaPTZ-VYSK1g/exec";
+$("gen").onclick=function(){if(!val()){var b=document.querySelector(".bad");if(b)b.scrollIntoView({block:"center"});return}
+ var btn=$("gen"),sts=$("sts"),p=cat.value.split("|");
+ var data={submitted:new Date().toISOString(),name:$("name").value,dept:$("dept").value,category:p[0],type:p[1],standardDays:days()||"",priority:$("urg").checked?"URGENT":"Normal",approvedBy:$("urg").checked?$("uap").value:"",requestDate:$("req").value,deadline:$("dl").value,title:$("title").value,slogan:$("slogan").value,concept:$("concept").value,references:$("refs").value,size:$("size").value,approvalPerson:$("appr").value,notes:$("notes").value};
+ var show=function(msg,ok){$("out").textContent=build();sts.textContent=msg;sts.style.color=ok?"var(--ok)":"var(--er)";$("res").hidden=false;$("form").hidden=true;$("res").scrollIntoView()};
+ if(SHEET_URL.indexOf("https://script.google.com/")!==0){show("Google Sheet is not connected yet. Set SHEET_URL in the code.",false);return}
+ btn.disabled=true;btn.textContent="Submitting...";
+ fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)})
+ .then(function(){show("Request submitted to the Creative Team.",true)})
+ .catch(function(){show("Could not submit. Check your connection and try again, or copy the text below and send it manually.",false)})
+ .then(function(){btn.disabled=false;btn.textContent="Submit Request"})};
+$("ed").onclick=function(){$("res").hidden=true;$("form").hidden=false};
+$("cp").onclick=function(){var t=$("out").textContent;
+ var done=function(){$("cpm").textContent="Copied."};
+ var fb=function(){var r=document.createRange();r.selectNodeContents($("out"));var s=getSelection();s.removeAllRanges();s.addRange(r);$("cpm").textContent="Text selected. Press Ctrl/Cmd+C to copy."};
+ try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}};
+$("rst").onclick=function(){if(!confirm("Clear the form?"))return;ids.forEach(function(i){$(i).value=""});$("urg").checked=false;$("req").value=iso(new Date());clr();upd()};
+ids.concat(["urg"]).forEach(function(i){$(i).addEventListener("input",upd);$(i).addEventListener("change",upd)});
+load();upd();
+</script>
+</body>
+</html>
